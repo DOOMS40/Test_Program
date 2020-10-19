@@ -1,0 +1,36 @@
+<div class="container">
+  
+  
+    <h1>Update</h1>
+
+    <%= form_for :project, url: project_path, method: :put do |f|%>
+      
+      <% if @project && @project.errors.any? %>
+        <p>
+          <ul>
+            <% @project.errors.full_messages.each do |msg| %>
+            <li>
+              <%= msg %>
+            </li>
+          <% end %>
+          </ul>
+        </p>
+      <% end %>
+      <table class="table table-bordered">
+        <tr>
+          <td>
+            <%= f.label :name %>
+          </td>
+          <td>
+          <%= f.text_field :name, autofocus: true %>
+          </td>
+          <td>
+             <%= f.submit 'Update' %> | <%= link_to 'Back', projects_path %>
+          </td>
+        </tr> 
+      </table>
+    <% end %>
+
+   
+
+</div>

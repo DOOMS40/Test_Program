@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TestProgram</title>
+    <%= csrf_meta_tags %>
+     <!-- Latest compiled and minified CSS -->
+
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+        
+
+    <script src="jquery.datetimepicker.js"></script>
+
+    <link rel="stylesheet" href="jquery.datetimepicker.css">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   
+  </head>
+
+  <body>
+    <% if user_signed_in? %>
+    <div class="navbar-right">
+      Hello <%= current_user.username%> | <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>  
+    </div>
+    <% else %>
+      <%= link_to 'Sign In', new_user_session_path %> |
+    <% end %>
+  
+  <%= link_to 'Projects', projects_path %> |
+  <%= link_to 'New_Project', new_project_path %>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
+
+  </body>
+</html>

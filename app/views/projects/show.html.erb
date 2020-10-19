@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <%= @project.name %>
+      </h1>
+    </div>
+  
+    <div class="col-md-12">
+      <% @project.tasks.each do |task| %>
+        <p>
+          <%= task.status %> |
+          <%= task.priority %> |
+          <%= task.name %> |
+           <%= task.deadline %>|
+           <%= link_to 'Update', edit_task_path(task) %> | <%= link_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you shure?' } %>
+
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    
+          <%= form_for ( [@project, @project.tasks.build] ) do |f| %>
+            
+              <div class="col-md-2">
+                <%= f.select  :status, options_for_select(Task.statuses.map {|k, v| [k.humanize.capitalize, v]}) %>
+              </div>
+
+              <div class="col-md-1">
+                <%= f.select :priority, options_for_select(Task.priorities.map{|k,v| [k.humanize.capitalize, v]}) %>
+              </div>
+              <div class="col-md-4">
+                <%= f.text_field :name, size: "50x36,05" %> 
+              </div>
+              
+              <div class="col-md-2">
+                <%= f.text_field :deadline, 'data-behaviour' => 'datetimepicker', size: "20x36,05" %> 
+              </div>
+
+              <div class="col-md-3">
+                <%= f.button 'Add Task', :submit => "", class: "btn btn-lg btn-success"  %> | <%= link_to 'Back', projects_path %>
+              </div>
+
+               
+       
+          <% end %>
+
+  </div>  
+</div>
+  
+
+  
+
+
+        

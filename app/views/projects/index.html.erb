@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+      <table class="table table-bordered">
+        <tbody>
+          <% @projects.each do |project| %>
+            <tr>
+               <td  class="col-md-1">
+                <%= project.id %>
+              </td>
+                <td class="col-md-8">
+                   <%= project.name %>
+                </td>
+                <td class="col-md-3">
+                      <%= link_to 'Show', project_path(project) %> |
+                      <%= link_to 'Create', new_project_path %> |
+                      <%= link_to 'Update', edit_project_path(project) %> |
+                      <%= link_to 'Destroy', project_path(project), method: :delete, data: { :confirm => 'Are you shure' } %>
+                </td>
+              </tr>
+          <% end %>
+        </tbody>
+        
+    </table>
+  </div>
+</div>

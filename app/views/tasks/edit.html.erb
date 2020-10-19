@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+          <%= form_for :task, url: task_path(@task), method: :put do |f| %>
+              <div class="col-md-2">
+                <%= f.select  :status, options_for_select(Task.statuses.map {|k, v| [k.humanize.capitalize, v]}) %>
+              </div>
+              
+              <div class="col-md-7">
+                  <%= f.text_field :name, size: "70x36,05" %> 
+              </div>
+              <div class="col-md-3">
+                    <%= f.submit 'Update Task' %> | <%= link_to "Back", @task.project %>
+              </div>
+        
+          <% end %>
+  </div>
+</div>
