@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to @project
     else
-      render action: 'new'
+      render :new
     end
   end
 
@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       redirect_to projects_path
     else
-      render action: 'edit'
+      render :edit
     end
   end
 
